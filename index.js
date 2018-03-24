@@ -1,6 +1,5 @@
 const express = require('express');
 const next = require('next');
-// const httpProxy = require('http-proxy');
 const LRUCache = require('lru-cache');
 const config = require('./config');
 
@@ -33,44 +32,9 @@ function renderAndCache(req, res, pagePath, queryParams) {
     .catch(err => app.renderError(err, req, res, pagePath, queryParams));
 }
 
-// const proxy = httpProxy.createProxyServer({
-//   target: config.apiPath,
-//   secure: false,
-// });
-
 app.prepare().then(() => {
   const server = express();
-
-  // server.use('/api', (req, res) => {
-  //   proxy.web(req, res, {
-  //     target: config.apiPath,
-  //     prependPath: false,
-  //     changeOrigin: true,
-  //   });
-  // });
-
-  server.get('/', (req, res) => renderAndCache(req, res, '/landing'));
-  server.get('/score', (req, res) => renderAndCache(req, res, '/score'));
-  server.get('/countdown', (req, res) => res.redirect('https://microbenz.github.io/YWC15-Countdown/'));
-  // server.get('/media', (req, res) => renderAndCache(req, res, '/media'));
-  // server.get('/register', (req, res) => res.redirect('/register/step1'));
-  // server.get('/register/step1', (req, res) => app.render(req, res, '/registration', { step: 1 }));
-  // server.get('/register/step2', (req, res) => app.render(req, res, '/registration', { step: 2 }));
-  // server.get('/register/step3', (req, res) => app.render(req, res, '/registration', { step: 3 }));
-  // server.get('/register/step4', (req, res) => app.render(req, res, '/registration', { step: 4 }));
-  // server.get('/register/verify', (req, res) => app.render(req, res, '/registration', { step: 5 }));
-  // server.get('/register/completed', (req, res) => app.render(req, res, '/registration/completed'));
-  server.get('/annoucement', (req, res) => renderAndCache(req, res, '/finalist'));
-  server.get('/semi-final', (req, res) => renderAndCache(req, res, '/announce'));
-  server.get('/queue', (req, res) => renderAndCache(req, res, '/queue'));
-  server.get('/workshop-slide/:group', (req, res) => {
-    const redirectPath = config.ggDriveUpload[req.params.group];
-    if (!redirectPath) {
-      return res.redirect('/');
-    }
-    return res.redirect(redirectPath);
-  });
-
+  server.get('/', (req, res) => renderAndCache(req, res, '/registration'));
   server.get('*', (req, res) => handle(req, res));
   server.listen(config.port, () => console.log(`YWC15 Registration Front-End is started at port ${config.port}`));
 });
