@@ -4,7 +4,6 @@ import { ServerStyleSheet } from 'styled-components';
 
 import config from '../config';
 import seo from '../seo.json';
-import colors from '../utils/colors';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -20,9 +19,9 @@ export default class MyDocument extends Document {
       <html lang="th">
         <Head>
           <title>{seo.title}</title>
-          <link rel="stylesheet" href="/static/fonts/fonts.css" async />
+          {/* <link rel="stylesheet" href="/static/fonts/fonts.css" async />
           <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" async />
-          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" async />
+          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" async /> */}
           {/* <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" async /> */}
           {/* <link rel="stylesheet" href="/static/libs/flatpickr/dark.css" async /> */}
 
@@ -63,55 +62,23 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#1f2833" />
           {styleTags}
         </Head>
-        <body style={{ backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '70%' }}>
+        <body>
           {main}
+          
+          {/* Particle */}
+          <div id="particles-js"></div>
+          <style>{`
+            .particles-js-canvas-el {
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+            }
+          `}</style>
+            
           <NextScript />
-          {/* <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.fbAsyncInit = function() {
-                  FB.init({
-                    appId: '${config.facebookAppsID}',
-                    cookie: true,
-                    xfbml: true,
-                    version: 'v2.10'
-                  });
-                  FB.AppEvents.logPageView();
-                };
-
-                (function(d, s, id){
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) {return;}
-                  js = d.createElement(s); js.id = id;
-                  js.src = "//connect.facebook.net/en_US/sdk.js";
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-              `
-            }}
-          /> */}
-          {/* <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                <!-- Facebook Pixel Code -->
-                <script>
-                  !function(f,b,e,v,n,t,s)
-                  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                  n.queue=[];t=b.createElement(e);t.async=!0;
-                  t.src=v;s=b.getElementsByTagName(e)[0];
-                  s.parentNode.insertBefore(t,s)}(window, document,'script',
-                  'https://connect.facebook.net/en_US/fbevents.js');
-                  fbq('init', '852229261558709');
-                  fbq('track', 'PageView');
-                </script>
-                <noscript><img height="1" width="1" style="display:none"
-                  src="https://www.facebook.com/tr?id=852229261558709&ev=PageView&noscript=1"
-                /></noscript>
-                <!-- End Facebook Pixel Code -->
-              `
-            }}
-          /> */}
+          <script src="/static/js/particle.js"/>
         </body>
       </html>
     );
