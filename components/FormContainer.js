@@ -12,8 +12,15 @@ const Container = styled.div`
   background: #EEEAE6;
 `;
 
-export default ({ children }) => (
+const Heading = styled.h1`
+  font-family: 'Supermarket';
+  margin: 20px 0;
+  font-size: 40px;
+`;
+
+export default ({ children, heading }) => (
   <Container>
+    { heading !== undefined && <Heading>{ heading }</Heading>}
     { children }
   </Container>
 );
