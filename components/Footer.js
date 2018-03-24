@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterContainer = styled.div`
   width: 100vw;
-  height: 150px;
+  height: 140px;
   background: url(/static/img/wave.svg);
   background-size: 100%;
 `;

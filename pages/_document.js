@@ -19,9 +19,8 @@ export default class MyDocument extends Document {
       <html lang="th">
         <Head>
           <title>{seo.title}</title>
-          {/* <link rel="stylesheet" href="/static/fonts/fonts.css" async />
-          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" async />
-          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" async /> */}
+          <link rel="stylesheet" href="/static/fonts/fonts.css" async />
+          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" async />
           {/* <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" async /> */}
           {/* <link rel="stylesheet" href="/static/libs/flatpickr/dark.css" async /> */}
 
